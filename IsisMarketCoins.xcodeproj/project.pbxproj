@@ -27,6 +27,7 @@
 		78D749302ADDCCD700A3F301 /* GlobalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D7492F2ADDCCD700A3F301 /* GlobalStore.swift */; };
 		78D749322ADDCCEA00A3F301 /* CoinsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D749312ADDCCEA00A3F301 /* CoinsStore.swift */; };
 		78D749352ADDD41800A3F301 /* ListCoinsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D749342ADDD41800A3F301 /* ListCoinsDataProvider.swift */; };
+		78D749382ADDFF9B00A3F301 /* GlobalValuesDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D749372ADDFF9B00A3F301 /* GlobalValuesDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		78D7492F2ADDCCD700A3F301 /* GlobalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStore.swift; sourceTree = "<group>"; };
 		78D749312ADDCCEA00A3F301 /* CoinsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsStore.swift; sourceTree = "<group>"; };
 		78D749342ADDD41800A3F301 /* ListCoinsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoinsDataProvider.swift; sourceTree = "<group>"; };
+		78D749372ADDFF9B00A3F301 /* GlobalValuesDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalValuesDataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		78D7490F2ADDA09100A3F301 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				78D749362ADDFF6D00A3F301 /* GlobalValuesDataProvider */,
 				78D7491D2ADDB69800A3F301 /* DataProvider */,
 				78D749122ADDA0E700A3F301 /* Models */,
 			);
@@ -171,6 +174,14 @@
 				78D749342ADDD41800A3F301 /* ListCoinsDataProvider.swift */,
 			);
 			path = CoinsDataProvider;
+			sourceTree = "<group>";
+		};
+		78D749362ADDFF6D00A3F301 /* GlobalValuesDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				78D749372ADDFF9B00A3F301 /* GlobalValuesDataProvider.swift */,
+			);
+			path = GlobalValuesDataProvider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 				78D749352ADDD41800A3F301 /* ListCoinsDataProvider.swift in Sources */,
 				78D749272ADDB8CF00A3F301 /* GenericStore.swift in Sources */,
 				78D749002ADD9FBA00A3F301 /* ViewController.swift in Sources */,
+				78D749382ADDFF9B00A3F301 /* GlobalValuesDataProvider.swift in Sources */,
 				78D749252ADDB72600A3F301 /* API.swift in Sources */,
 				78D748FC2ADD9FBA00A3F301 /* AppDelegate.swift in Sources */,
 				78D749292ADDBB8E00A3F301 /* Extensions.swift in Sources */,
