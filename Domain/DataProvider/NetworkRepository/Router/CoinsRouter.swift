@@ -30,7 +30,7 @@ enum CoinsRouter {
     }
     
     func asURLRequest() throws -> URL?{
-        guard let url = URL(String: API.baseURL) else { return nil }
+        guard let url = URL(string: API.baseURL) else { return nil }
         
         switch self {
         case .coinsMarkets(let currency, let cryptocurrency, let order, let
