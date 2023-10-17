@@ -1,8 +1,8 @@
 //
 //  ListCoinsDataProvider.swift
-//  IsisMarketCoins
+//  MarketCoins
 //
-//  Created by Guilherme Silveira de Souza on 16/10/23.
+//  Created by Robson Moreira on 06/11/22.
 //
 
 import Foundation
@@ -18,14 +18,14 @@ class ListCoinsDataProvider: DataProviderManager<ListCoinsDataProviderDelegate, 
     }
     
     func fetchListCoins(by vsCurrency: String,
-                        with cryptocurrency: [String]?,
+                        with crytocurrency: [String]?,
                         orderBy order: String,
                         total parPage: Int,
                         page: Int,
                         percentagePrice: String) {
         
         coinsStore?.fetchLisCoins(by: vsCurrency,
-                                  with: cryptocurrency,
+                                  with: crytocurrency,
                                   orderBy: order,
                                   total: parPage,
                                   page: page,

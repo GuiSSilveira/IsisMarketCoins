@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  IsisMarketCoins
+//  MarketCoins
 //
-//  Created by Guilherme Silveira de Souza on 16/10/23.
+//  Created by Robson Moreira on 06/11/22.
 //
 
 import UIKit

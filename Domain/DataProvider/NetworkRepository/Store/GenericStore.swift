@@ -1,26 +1,25 @@
 //
 //  GenericStore.swift
-//  IsisMarketCoins
+//  MarketCoins
 //
-//  Created by Guilherme Silveira de Souza on 16/10/23.
+//  Created by Robson Moreira on 06/11/22.
 //
 
 import Foundation
 
 protocol GenericStoreProtocol {
-    var error: Error {get set}
-    typealias completion<T> = (_ _result: T, _ failure: Error?) -> Void
+    var error: Error { get set }
+    typealias completion<T> = (_ result: T, _ failure: Error?) -> Void
 }
 
-class GenericStoreRquest: GenericStoreProtocol {
+class GenericStoreRequest: GenericStoreProtocol {
     
-    var error = NSError(domain: "", code: 901, userInfo:
-        [NSLocalizedDescriptionKey: "Error getting information"]) as Error
+    var error = NSError(domain: "", code: 901, userInfo: [NSLocalizedDescriptionKey: "Error getting information"]) as Error
     
-    func request<T: Codable>(url: URL, completion: @escaping completion<T?>){
+    func request<T: Codable>(url: URL, completion: @escaping completion<T?>) {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
-                completion(nil, self, error)
+                completion(nil, self.error)
                 return
             }
             
@@ -29,10 +28,13 @@ class GenericStoreRquest: GenericStoreProtocol {
                 return
             }
             
-            do{
-                let objetc = try JSONDecoder().decode(T.self, from: data)
-                completion(objetc, nil)
-            }catch {
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
+                
+                let object = try decoder.decode(T.self, from: data)
+                completion(object, nil)
+            } catch {
                 completion(nil, error)
             }
         }

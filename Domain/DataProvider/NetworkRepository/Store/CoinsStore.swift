@@ -1,15 +1,15 @@
 //
 //  CoinsStore.swift
-//  IsisMarketCoins
+//  MarketCoins
 //
-//  Created by Guilherme Silveira de Souza on 16/10/23.
+//  Created by Robson Moreira on 06/11/22.
 //
 
 import Foundation
 
 protocol CoinsStoreProtocol: GenericStoreProtocol {
     func fetchLisCoins(by vsCurrency: String,
-                       with cryptocurrency: [String]?,
+                       with crytocurrency: [String]?,
                        orderBy order: String,
                        total parPage: Int,
                        page: Int,
@@ -19,18 +19,18 @@ protocol CoinsStoreProtocol: GenericStoreProtocol {
                          currency vsCurrency: String,
                          from: String,
                          to: String,
-                         completion:  @escaping completion<[MarketChartModel]?>)
+                         completion: @escaping completion<MarketChartModel?>)
     func fetchHistorical(by id: String,
                          currency vsCurrency: String,
                          of days: String,
                          completion: @escaping completion<[GraphicDataModel]?>)
     func fetchCoin(by id: String, completion: @escaping completion<CurrentDataModel?>)
 }
-    
-class CoinsStore: GenericStoreRquest, CoinsStoreProtocol{
+
+class CoinsStore: GenericStoreRequest, CoinsStoreProtocol {
     
     func fetchLisCoins(by vsCurrency: String,
-                       with cryptocurrency: [String]?,
+                       with crytocurrency: [String]?,
                        orderBy order: String,
                        total parPage: Int,
                        page: Int,
@@ -38,16 +38,16 @@ class CoinsStore: GenericStoreRquest, CoinsStoreProtocol{
                        completion: @escaping completion<[CoinModel]?>) {
         
         do {
-            guard let url = try CoinsRouter.coinsMarkets(currency: vsCurrency,                                                      cryptocurrency: cryptocurrency,
+            guard let url = try CoinsRouter.coinsMarkets(currency: vsCurrency,
+                                                         crytocurrency: crytocurrency,
                                                          order: order,
                                                          parPage: parPage,
                                                          page: page,
-                                                         percentage: percentagePrice).asURLRequest()else
-            {
+                                                         percentage: percentagePrice).asURLRequest() else {
                 return completion(nil, error)
             }
             request(url: url, completion: completion)
-        }catch let error {
+        } catch let error {
             completion(nil, error)
         }
     }
@@ -56,14 +56,15 @@ class CoinsStore: GenericStoreRquest, CoinsStoreProtocol{
                          currency vsCurrency: String,
                          from: String,
                          to: String,
-                         completion: @escaping completion<[MarketChartModel]?>) {
+                         completion: @escaping completion<MarketChartModel?>) {
+        
         do {
             guard let url = try CoinsRouter.coinsByIdMarketChart(id: id, currency: vsCurrency, from: from, to: to).asURLRequest() else {
                 return completion(nil, error)
             }
             request(url: url, completion: completion)
-        }catch let error{
-            completion(nil,error)
+        } catch let error {
+            completion(nil, error)
         }
     }
     
@@ -71,6 +72,7 @@ class CoinsStore: GenericStoreRquest, CoinsStoreProtocol{
                          currency vsCurrency: String,
                          of days: String,
                          completion: @escaping completion<[GraphicDataModel]?>) {
+        
         do {
             guard let url = try CoinsRouter.coinsByIdOhlc(id: id, currency: vsCurrency, days: days).asURLRequest() else {
                 return completion(nil, error)
@@ -91,4 +93,5 @@ class CoinsStore: GenericStoreRquest, CoinsStoreProtocol{
             completion(nil, error)
         }
     }
+    
 }

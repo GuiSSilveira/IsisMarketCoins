@@ -1,5 +1,5 @@
 //
-//  CoinsListWorker.swift
+//  GlobalValuesWorker.swift
 //  MarketCoins
 //
 //  Created by Robson Moreira on 06/11/22.
@@ -12,39 +12,30 @@
 
 import UIKit
 
-class CoinsListWorker {
+class GlobalValuesWorker {
     
-    private let dataProvider: ListCoinsDataProvider?
-    private var completion: ((Result<[CoinModel]?, KarketCoinsError>) -> Void)?
+    private let dataProvider: GlobalValuesDataProvider?
+    private var completion: ((Result<GlobalModel?, KarketCoinsError>) -> Void)?
     
-    init(dataProvider: ListCoinsDataProvider = ListCoinsDataProvider()) {
+    init(dataProvider: GlobalValuesDataProvider = GlobalValuesDataProvider()) {
         self.dataProvider = dataProvider
         self.dataProvider?.delegate = self
     }
     
-    func doFetchListCoins(baseCoin: String,
-                          orderBy: String,
-                          top: Int,
-                          percentagePrice: String,
-                          completion: @escaping ((Result<[CoinModel]?, KarketCoinsError>) -> Void)) {
-        
-        dataProvider?.fetchListCoins(by: baseCoin,
-                                     with: nil,
-                                     orderBy: orderBy,
-                                     total: top,
-                                     page: 1,
-                                     percentagePrice: percentagePrice)
+    func doFetchGlobalValues(completion: @escaping ((Result<GlobalModel?, KarketCoinsError>) -> Void)) {
+        dataProvider?.fetchGlobalValues()
         self.completion = completion
     }
+    
 }
 
-extension CoinsListWorker: ListCoinsDataProviderDelegate {
+extension GlobalValuesWorker: GlobalValuesDataProviderDelegate {
     
     func success(model: Any) {
         guard let completion = completion else {
             fatalError("Completion not implemented!")
         }
-        completion(.success(model as? [CoinModel]))
+        completion(.success(model as? GlobalModel))
     }
     
     func errorData(_ provider: GenericDataProviderDelegate?, error: Error) {

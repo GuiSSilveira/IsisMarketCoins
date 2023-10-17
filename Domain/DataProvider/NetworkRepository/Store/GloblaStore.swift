@@ -1,8 +1,8 @@
 //
-//  GlobalStore.swift
-//  IsisMarketCoins
+//  GloblaStore.swift
+//  MarketCoins
 //
-//  Created by Guilherme Silveira de Souza on 16/10/23.
+//  Created by Robson Moreira on 06/11/22.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ protocol GlobalStoreProtocol: GenericStoreProtocol {
     func fetchGlobal(completion: @escaping completion<GlobalModel?>)
 }
 
-class GlobalStore: GenericStoreRquest, GlobalStoreProtocol {
+class GloblaStore: GenericStoreRequest, GlobalStoreProtocol {
     
     func fetchGlobal(completion: @escaping completion<GlobalModel?>) {
         do {
@@ -19,10 +19,8 @@ class GlobalStore: GenericStoreRquest, GlobalStoreProtocol {
                 return completion(nil, error)
             }
             request(url: url, completion: completion)
-        }catch let error {
+        } catch let error {
             completion(nil, error)
         }
     }
 }
-    
-

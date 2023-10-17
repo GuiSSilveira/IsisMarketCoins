@@ -1,8 +1,8 @@
 //
 //  GenericDataProvider.swift
-//  IsisMarketCoins
+//  MarketCoins
 //
-//  Created by Guilherme Silveira de Souza on 16/10/23.
+//  Created by Robson Moreira on 06/11/22.
 //
 
 import Foundation
@@ -12,7 +12,7 @@ protocol GenericDataProviderDelegate {
     func errorData(_ provider: GenericDataProviderDelegate?, error: Error)
 }
 
-class DataProviderManager<T, S>{
+class DataProviderManager<T, S> {
     var delegate: T?
     var model: S?
 }
